@@ -81,7 +81,10 @@ class TelegramSender:
     async def send_next_message_by_theme(self, theme: str):
         try:
             last_by_theme = -50
-            for th in  self.getnewmes.consts_actual:
+            # Обновляем значения констант перед каждой отправкой
+            self.getnewmes._get_actual_themes()
+            
+            for th in self.getnewmes.consts_actual:
                if th['name'] == theme:
                    last_by_theme = th['meaning']
                    break
