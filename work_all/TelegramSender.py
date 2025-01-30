@@ -27,18 +27,11 @@ class TelegramSender:
     async def main(self):
         self.dp.include_router(self.router)
         # await self.sendmes('test')
-        await self.send_next_message_by_theme('content')
-        await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
-        # await self.send_next_message_by_theme('content')
+        # for i in range(200):
+        #     await self.send_next_message_by_theme('content')
+        #     await asyncio.sleep(60)
+        
+        # await self.send_message_by_id(186)
         
         await self.dp.start_polling(self.bot)
         
@@ -51,8 +44,11 @@ class TelegramSender:
             self.logger.log_to_file(f"Ошибка при отправке в группу {self.group_id}: {e}")
     
     async def sendpic(self, text, image=''):
+        if not image:
+            image = ''
+            
         if len(text) < 1024:    
-            await self.sendpic_old(self, text, image='')
+            await self.sendpic_old(text, image)
             return
          
         try:
@@ -98,5 +94,15 @@ class TelegramSender:
             self.getnewmes.increment_theme_position(theme)
         except Exception as e:
             self.logger.log_to_file(f"Ошибка при попытке отправить сообщение по теме {theme} : {e}")
-        
-        
+
+    async def send_message_by_id(self, post_id: int):
+        try:
+            mes = self.getnewmes.posts.get_by_id(post_id)
+            if mes is None:
+                self.logger.log_to_file(f"Пост с id {post_id} не найден")
+                return
+                
+            await self.sendpic(mes['text'], mes['img_path'])
+            self.logger.log_to_file(f"Отправлен пост с id {post_id}")
+        except Exception as e:
+            self.logger.log_to_file(f"Ошибка при отправке поста с id {post_id}: {e}")

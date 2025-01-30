@@ -5,6 +5,8 @@ import asyncio
 from work_all.db_work import DBLow, Posts, Consts
 
 from work_all import FolderManager, Logger, GetNewMes, TelegramSender
+from work_all.Scheduler import Scheduler
+from schedule_config import SCHEDULE_CONFIG
 
 # TODO
 logger = Logger.Logger('data/log')
@@ -87,9 +89,25 @@ telegram_params = {
 
 # print(telegram_params)
 telegram = TelegramSender.TelegramSender(telegram_params['token'], telegram_params['group_id'], logger, foldman, getnewmes)
+scheduler = Scheduler(telegram, logger)
+
+# Добавляем задачи из конфигурации
+for task_config in SCHEDULE_CONFIG:
+    scheduler.add_task(
+        task_config['schedule'],
+        task_config['task_type'],
+        task_config['params']
+    )
 
 if __name__ == "__main__":
-    asyncio.run(telegram.main())
+    async def main():
+        # Запускаем планировщик и бота одновременно
+        await asyncio.gather(
+            scheduler.run_schedule(),
+            telegram.dp.start_polling(telegram.bot)
+        )
+    
+    asyncio.run(main())
 
 # telegram = TelegramWork.TelegramWork(telegram_params)
 
