@@ -1,0 +1,4 @@
+APScheduler
+python-dotenv
+psycopg2-binary
+aiogram

@@ -13,7 +13,7 @@ class Consts:
             return False
         if len(result) == 0:
             return False
-        return True
+        return bool(result)
 
     def _create_if_not_exist(self):
         # Создание таблицы, если её нет

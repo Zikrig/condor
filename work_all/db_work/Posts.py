@@ -3,25 +3,32 @@ from os import remove
 from os import path as p
 
 from work_all.db_work.DBLow import DBLow
+from work_all import Logger
 
 class Posts:
-    def __init__(self, db: DBLow, name: str):
+    def __init__(self, db: DBLow, name: str, logger: Logger.Logger):
         # создаем messages
         self.name = name
         self.db = db
+        
+        self.logger = logger
+        
         self._create_if_not_exist()
         seed()
 
     def _is_exist(self):
         result = self.db.get(f"SELECT to_regclass('{self.name}')")[0]
+        self.logger.log_to_file(str(result))
         if result is None:
             return False
         if len(result) == 0:
             return False
-        return True
+        return bool(result)
 
     def _create_if_not_exist(self):
+        self.logger.log_to_file(f'Надо ли создавать таблицу {self.name}')
         if not self._is_exist():
+            self.logger.log_to_file(f'Да, надо')
             self.db.send(f"""
             CREATE TABLE {self.name} (
                 id SERIAL PRIMARY KEY,
@@ -41,6 +48,7 @@ class Posts:
         return result[0] if result else 0
 
     def add(self, theme: str, text: str, txt_path: str = None):
+        self.logger.log_to_file(f'Добавляем элемент с путем {txt_path}')
         # Добавляем запись в таблицу
         return self.db.send(f"""
         INSERT INTO {self.name} (theme, text, txt_path)

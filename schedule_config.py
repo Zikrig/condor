@@ -4,8 +4,17 @@ from datetime import time
 SCHEDULE_CONFIG = [
     {
         'schedule': {
-            'hour': 9,
-            'minute': 50,
+            'hour': 12,
+            'minute': 0,
+            'day_of_week': '*', # 'mon-fri'  # Понедельник-пятница
+        },
+        'task_type': 'theme',
+        'params': {'theme': 'content'}
+    },
+    {
+        'schedule': {
+            'hour': 19,
+            'minute': 0,
             'day_of_week': '*', # 'mon-fri'  # Понедельник-пятница
         },
         'task_type': 'theme',
@@ -20,13 +29,13 @@ SCHEDULE_CONFIG = [
     #     'task_type': 'theme',
     #     'params': {'theme': 'content'}
     # },
-    {
-        'schedule': {
-            'hour': 16,
-            'minute': 0,
-            'day_of_week': '*'  # Каждый день
-        },
-        'task_type': 'post_id',
-        'params': {'post_id': 186}
-    }
+    # {
+    #     'schedule': {
+    #         'hour': 17,
+    #         'minute': 0,
+    #         'day_of_week': '*'  # Каждый день
+    #     },
+    #     'task_type': 'post_id',
+    #     'params': {'post_id': 184}
+    # }
 ] 

@@ -10,6 +10,7 @@ from schedule_config import SCHEDULE_CONFIG
 
 logger = Logger.Logger('data/log')
 
+logger.log_to_file('Начало работы')
 # Создание, если нет:
 # БД
 load_dotenv('.env')
@@ -22,10 +23,10 @@ db_params = (
     getenv('DB_PORT')
 )
 
-db = DBLow.DBLow(db_params)
+db = DBLow.DBLow(db_params, logger)
 
 #   Таблицы Posts
-posts = Posts.Posts(db, 'posts')
+posts = Posts.Posts(db, 'posts', logger)
 #   Таблицы Consts
 consts = Consts.Consts(db, 'consts')
 
@@ -55,7 +56,7 @@ foldman.process_texts()
 foldman.process_images()
 
 # Создание csv
-foldman.put_data_to_csv(foldman.textes_to, foldman.images_to)
+# foldman.put_data_to_csv(foldman.textes_to, foldman.images_to)
 
 
 # Обойти csv построчно

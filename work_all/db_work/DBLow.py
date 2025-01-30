@@ -1,9 +1,11 @@
 import psycopg2
 from psycopg2 import Error
+from work_all import Logger
 
 class DBLow:
-    def __init__(self, params):
+    def __init__(self, params, logger: Logger.Logger):
         self.db_name, self.user, self.password, self.host, self.port = params
+        self.logger = logger
         self._create_if_not_exist()
         
     def _makezap(self, basename=False):
@@ -31,21 +33,21 @@ class DBLow:
                 return exists[0] == 1
             return False
         except (Exception, Error) as error:
-            print(f'Ошибка подключения: {error}')
+            self.logger.log_to_file(f'Ошибка подключения: {error}')
             return False
 
     def _create_if_not_exist(self):
         bd_existance = self._test()
         if not bd_existance:
             try:
-                conn = self._makezap()
+                conn = self._makezap(True)
                 cursor = conn.cursor()
                 cursor.execute(f"CREATE DATABASE {self.db_name};")
                 cursor.close()
                 conn.close()
-                print(f'База данных {self.db_name} создана')
+                self.logger.log_to_file(f'База данных {self.db_name} создана')
             except (Exception, Error) as error:
-                print(f'Ошибка создания БД: {error}')
+                self.logger.log_to_file(f'Ошибка создания БД: {error}')
             
 
     def get(self, zap):
@@ -62,7 +64,7 @@ class DBLow:
             conn.close()
         except (Exception, Error) as error:
             res = []
-            print(f'Ошибка {error}')
+            self.logger.log_to_file(f'Ошибка {error}')
             # res = error
         finally:
             return res
@@ -81,7 +83,7 @@ class DBLow:
             conn.close()
         except (Exception, Error) as error:
             res = []
-            print(f'Ошибка {error}')
+            self.logger.log_to_file(f'Ошибка {error}')
             # res = error
         finally:
             return res
@@ -96,4 +98,5 @@ class DBLow:
             return True
         except (Exception, Error) as error:
             res = error
+            self.logger.log_to_file(f'Ошибка {error}')
             return res
