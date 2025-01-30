@@ -4,25 +4,25 @@ from datetime import time
 SCHEDULE_CONFIG = [
     {
         'schedule': {
-            'hour': 4,
-            'minute': 44,
-            'day_of_week': 'mon-fri'  # Понедельник-пятница
+            'hour': 9,
+            'minute': 50,
+            'day_of_week': '*', # 'mon-fri'  # Понедельник-пятница
         },
         'task_type': 'theme',
         'params': {'theme': 'content'}
     },
+    # {
+    #     'schedule': {
+    #         'hour': 11,
+    #         'minute': 41,
+    #         'day_of_week': '1,3,5' # вторник, четверг, суббота
+    #     },
+    #     'task_type': 'theme',
+    #     'params': {'theme': 'content'}
+    # },
     {
         'schedule': {
-            'hour': 7,
-            'minute': 30,
-            'day_of_week': '0,2,4'  # Воскресенье, вторник, четверг (0-6, где 0=воскресенье)
-        },
-        'task_type': 'theme',
-        'params': {'theme': 'content'}
-    },
-    {
-        'schedule': {
-            'hour': 8,
+            'hour': 16,
             'minute': 0,
             'day_of_week': '*'  # Каждый день
         },

@@ -8,7 +8,6 @@ from work_all import FolderManager, Logger, GetNewMes, TelegramSender
 from work_all.Scheduler import Scheduler
 from schedule_config import SCHEDULE_CONFIG
 
-# TODO
 logger = Logger.Logger('data/log')
 
 # Создание, если нет:

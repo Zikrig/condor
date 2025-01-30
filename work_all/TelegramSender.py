@@ -25,14 +25,15 @@ class TelegramSender:
         self.router = Router()
         
     async def main(self):
-        self.dp.include_router(self.router)
-        # await self.sendmes('test')
+        # self.dp.include_router(self.router)
         # for i in range(200):
+        #     await asyncio.sleep(60)    
         #     await self.send_next_message_by_theme('content')
-        #     await asyncio.sleep(60)
-        
         # await self.send_message_by_id(186)
         
+        # await self.dp.start_polling(self.bot)
+        
+        self.dp.include_router(self.router)
         await self.dp.start_polling(self.bot)
         
         

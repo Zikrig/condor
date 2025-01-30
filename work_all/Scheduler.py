@@ -40,8 +40,19 @@ class Scheduler:
             
         self.logger.log_to_file(f"Добавлена задача {task_type} с расписанием {schedule}")
         
+    async def send_message_by_id(self, post_id):
+        await self.telegram.send_message_by_id(post_id)
+    
+    async def send_next_message_by_theme(self, theme):
+        await self.telegram.send_next_message_by_theme(theme)
+        
+    async def sendmes(self, text):
+        await self.telegram.sendmes(text)
+        
     async def run_schedule(self):
         self.scheduler.start()
         # Держим планировщик запущенным
+        
         while True:
-            await asyncio.sleep(60) 
+            await asyncio.sleep(60)
+            # await self.send_next_message_by_theme('content')
