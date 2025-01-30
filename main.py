@@ -55,7 +55,7 @@ foldman.process_texts()
 foldman.process_images()
 
 # Создание csv
-# foldman.put_data_to_csv(foldman.textes_to, foldman.images_to)
+foldman.put_data_to_csv(foldman.textes_to, foldman.images_to)
 
 
 # Обойти csv построчно
