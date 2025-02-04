@@ -25,9 +25,9 @@ db_params = (
 db = DBLow.DBLow(db_params)
 
 #   Таблицы Posts
-posts = Posts.Posts(db, 'posts')
+posts = Posts.Posts(db, 'posts', logger)
 #   Таблицы Consts
-consts = Consts.Consts(db, 'consts')
+consts = Consts.Consts(db, 'consts', logger)
 
 print(posts.add('test', 'test', 'test'))
 print(posts.get_last_n(5))

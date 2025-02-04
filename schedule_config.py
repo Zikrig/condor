@@ -4,8 +4,8 @@ from datetime import time
 SCHEDULE_CONFIG = [
     {
         'schedule': {
-            'hour': 12,
-            'minute': 0,
+            'hour': 23,
+            'minute': 55,
             'day_of_week': '*', # 'mon-fri'  # Понедельник-пятница
         },
         'task_type': 'theme',
@@ -13,8 +13,8 @@ SCHEDULE_CONFIG = [
     },
     {
         'schedule': {
-            'hour': 19,
-            'minute': 0,
+            'hour': 23,
+            'minute': 57,
             'day_of_week': '*', # 'mon-fri'  # Понедельник-пятница
         },
         'task_type': 'theme',

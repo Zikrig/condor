@@ -168,3 +168,7 @@ class Posts:
             "theme": result[3], 
             "text": result[4]
         }
+        
+    def delete_all(self):
+        self.logger.log_to_file(f'Удаляем все записи из таблицы {self.name}')
+        return self.db.send(f"DELETE FROM {self.name};")

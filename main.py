@@ -1,12 +1,14 @@
 from os import getenv
 from dotenv import load_dotenv
 import asyncio
+from time import sleep
 
 from work_all.db_work import DBLow, Posts, Consts
 
 from work_all import FolderManager, Logger, GetNewMes, TelegramSender
 from work_all.Scheduler import Scheduler
 from schedule_config import SCHEDULE_CONFIG
+
 
 logger = Logger.Logger('data/log')
 
@@ -28,7 +30,7 @@ db = DBLow.DBLow(db_params, logger)
 #   Таблицы Posts
 posts = Posts.Posts(db, 'posts', logger)
 #   Таблицы Consts
-consts = Consts.Consts(db, 'consts')
+consts = Consts.Consts(db, 'consts', logger)
 
 # Создание, если нет:
 # /data
@@ -50,6 +52,12 @@ logger.log_to_file(f"В таблице сначала {posts_count}")
 #   Сохранить название папки как тему
 #   По теме сохранить в таблицу тексты в папке
 #   Если файл уже есть - лог
+
+
+# posts.delete_all()
+# sleep(11111)
+
+
 # слить textes с data/content/textes
 foldman.process_texts()
 # слить images ...

@@ -1,9 +1,12 @@
 from work_all.db_work.DBLow import DBLow
+from work_all import Logger
 
 class Consts:
-    def __init__(self, db: DBLow, name: str = 'consts'):
+    def __init__(self, db: DBLow, name: str, logger: Logger.Logger):
         self.name = name
         self.db = db
+        self.logger = logger
+        
         self._create_if_not_exist()
 
     def _is_exist(self):
