@@ -53,6 +53,7 @@ class GetNewMes:
                 self.consts.add_const(theme_name, 'count', theme_count)
         
         self.themes_actual = self.posts.get_unique_themes()
+        self.themes_actual = self.posts.get_unique_themes()
         self.consts_actual = self.consts.get_consts_by_opt('now')
         self.consts_count = self.consts.get_consts_by_opt('count')
                 

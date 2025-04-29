@@ -92,11 +92,19 @@ getnewmes = GetNewMes.GetNewMes(posts, consts, logger)
 
 telegram_params = {
     'token': getenv('TOKEN'),
-    'group_id': getenv('GROUP_ID'),
+    'group_ids': getenv('GROUP_IDS'),  # Строка с ID каналов через запятую
+    'group_codes': getenv('GROUP_CODES'),  # Строка с кодовыми словами для групп через запятую
 }
 
 # print(telegram_params)
-telegram = TelegramSender.TelegramSender(telegram_params['token'], telegram_params['group_id'], logger, foldman, getnewmes)
+telegram = TelegramSender.TelegramSender(
+    telegram_params['token'], 
+    telegram_params['group_ids'], 
+    telegram_params['group_codes'],
+    logger, 
+    foldman, 
+    getnewmes
+)
 scheduler = Scheduler(telegram, logger)
 
 # Добавляем задачи из конфигурации

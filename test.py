@@ -29,5 +29,5 @@ posts = Posts.Posts(db, 'posts', logger)
 #   Таблицы Consts
 consts = Consts.Consts(db, 'consts', logger)
 
-print(posts.add('test', 'test', 'test'))
-print(posts.get_last_n(5))
+# print(posts.add('test', 'test', 'test'))
+# print(posts.get_last_n(5))

@@ -77,9 +77,12 @@ class FolderManager:
         text_files = []
         for theme_folder in Path(texts_dir).iterdir():
             if theme_folder.is_dir():
-                text_files.extend([f.name for f in theme_folder.iterdir() if f.is_file()])
+                text_files.extend([str(f) for f in theme_folder.iterdir() if f.is_file()])
                 
-        image_files = [f.name for f in Path(images_dir).iterdir() if f.is_file()]
+        image_files = [str(f) for f in Path(images_dir).iterdir() if f.is_file()]
+        
+        self.log.log_to_file(f"Найдено текстовых файлов: {len(text_files)}")
+        self.log.log_to_file(f"Найдено изображений: {len(image_files)}")
         
         if not text_files or not image_files:
             self.log.log_to_file("Не найдены файлы для создания пар")
@@ -95,6 +98,7 @@ class FolderManager:
                 writer = csv.writer(f)
                 writer.writerow(['txt_path', 'img_path'])
                 writer.writerows(pairs)
+            self.log.log_to_file(f"Создано пар текст-изображение: {len(pairs)}")
         except Exception as e:
             self.log.log_to_file(f"Ошибка при записи в CSV: {str(e)}")
             
