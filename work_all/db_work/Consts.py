@@ -10,10 +10,13 @@ class Consts:
         self._create_if_not_exist()
 
     def _is_exist(self):
-        # Проверка существования таблицы
-        result = self.db.get(f"SELECT to_regclass('{self.name}')")[0]
-        if result is None:
+        result = self.db.get(f"SELECT to_regclass('{self.name}')")
+        if not result:
             return False
+        if not result[0]:
+            return False 
+        result = result[0]
+        
         if len(result) == 0:
             return False
         return bool(result)
