@@ -4,8 +4,8 @@ from datetime import time
 SCHEDULE_CONFIG = [
     {
         'schedule': {
-            'hour': 12,
-            'minute': 00,
+            'hour': 20,
+            'minute': 5,
             'day_of_week': '*', # 'mon-fri'  # Понедельник-пятница
         },
         'task_type': 'theme',
@@ -35,7 +35,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -47,7 +47,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -59,7 +59,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -71,7 +71,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -83,7 +83,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -95,7 +95,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -107,7 +107,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -119,7 +119,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -131,7 +131,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -143,7 +143,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -155,7 +155,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     },
     {
@@ -167,7 +167,7 @@ SCHEDULE_CONFIG = [
         'task_type': 'theme',
         'params': {
             'theme': 'content_goro',
-            'group_id': -1002389077797  # ID первой группы
+            'group_id': -1002499255507  # ID первой группы
         }
     }
     # {
