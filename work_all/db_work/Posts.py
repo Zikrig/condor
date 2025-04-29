@@ -17,7 +17,11 @@ class Posts:
         seed()
 
     def _is_exist(self):
-        result = self.db.get(f"SELECT to_regclass('{self.name}')")[0]
+        result = self.db.get(f"SELECT to_regclass('{self.name}')")
+        if not result or result[0] is None:  
+            return False
+        result = result[0]
+        
         self.logger.log_to_file(str(result))
         if result is None:
             return False
