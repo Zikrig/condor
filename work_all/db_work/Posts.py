@@ -160,13 +160,13 @@ class Posts:
         SELECT id, txt_path, img_path, theme, text
         FROM {self.name}
         WHERE theme = '{theme}' AND id >= {last_id}
-        ORDER BY txt_path
+        ORDER BY id
         LIMIT 1
         """)
         
         if not result:
             return None
-            
+        # print(result[0], result[1])
         return {
             "id": result[0],
             "txt_path": result[1],
