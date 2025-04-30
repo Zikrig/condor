@@ -160,7 +160,7 @@ class Posts:
         SELECT id, txt_path, img_path, theme, text
         FROM {self.name}
         WHERE theme = '{theme}' AND id >= {last_id}
-        ORDER BY id
+        ORDER BY txt_path
         LIMIT 1
         """)
         
